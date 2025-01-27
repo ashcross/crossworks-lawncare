@@ -1,10 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useParallax } from "@/hooks/useParallax";
 
 const Hero = () => {
-  const { backgroundY, contentY } = useParallax(0.5);
-  
   const scrollToContact = () => {
     const contactSection = document.getElementById("contact");
     contactSection?.scrollIntoView({ behavior: "smooth" });
@@ -12,21 +9,17 @@ const Hero = () => {
 
   return (
     <div 
-      className="relative min-h-[600px] h-[75vh] overflow-hidden will-change-transform"
+      className="relative min-h-[600px] h-[75vh]"
     >
       <div
-        className="absolute inset-0 z-0 bg-cover bg-center transition-transform"
+        className="absolute inset-0 z-0 bg-cover bg-center"
         style={{
           backgroundImage: "url('https://images.unsplash.com/photo-1501854140801-50d01698950b')",
           filter: "brightness(0.7)",
-          transform: `translateY(${backgroundY}px)`,
         }}
       />
       <div 
-        className="container relative z-10 mx-auto px-4 h-full flex items-end transition-transform"
-        style={{
-          transform: `translateY(${contentY}px)`,
-        }}
+        className="container relative z-10 mx-auto px-4 h-full flex items-end"
       >
         <div className="max-w-2xl text-white pb-[10vh]">
           <h1 className="text-5xl font-bold mb-6">Professional Lawn Care & Property Maintenance</h1>
