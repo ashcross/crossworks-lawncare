@@ -20,7 +20,7 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative h-[calc(100vh-144px)] overflow-hidden">
+    <div className="relative h-screen">
       <div
         className="absolute inset-0 z-0 bg-cover bg-center"
         style={{
