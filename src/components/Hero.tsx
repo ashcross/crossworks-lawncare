@@ -1,13 +1,22 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const Hero = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
+  const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollPosition(window.scrollY);
+      if (!heroRef.current) return;
+      
+      // Get hero section bounds
+      const heroRect = heroRef.current.getBoundingClientRect();
+      
+      // Only update scroll position if hero section is visible
+      if (heroRect.bottom > 0) {
+        setScrollPosition(window.scrollY);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -20,19 +29,22 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative h-screen">
+    <div 
+      ref={heroRef}
+      className="relative min-h-[600px] max-h-[75vh]"
+    >
       <div
         className="absolute inset-0 z-0 bg-cover bg-center"
         style={{
           backgroundImage: "url('https://images.unsplash.com/photo-1501854140801-50d01698950b')",
-          transform: `translateY(${scrollPosition * 0.5}px)`,
+          transform: `translateY(${Math.min(scrollPosition * 0.5, 200)}px)`,
           filter: "brightness(0.7)",
         }}
       />
       <div 
         className="container relative z-10 mx-auto px-4 h-full flex items-center"
         style={{
-          transform: `translateY(${scrollPosition * 0.2}px)`,
+          transform: `translateY(${Math.min(scrollPosition * 0.2, 80)}px)`,
         }}
       >
         <div className="max-w-2xl text-white">
