@@ -8,18 +8,20 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative min-h-[80vh] flex items-center">
+    <div 
+      className="relative min-h-[600px] h-[75vh]"
+    >
       <div
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-0 bg-cover bg-center"
         style={{
           backgroundImage: "url('https://images.unsplash.com/photo-1501854140801-50d01698950b')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
           filter: "brightness(0.7)",
         }}
       />
-      <div className="container relative z-10 mx-auto px-4">
-        <div className="max-w-2xl text-white">
+      <div 
+        className="container relative z-10 mx-auto px-4 h-full flex items-end"
+      >
+        <div className="max-w-2xl text-white pb-[10vh]">
           <h1 className="text-5xl font-bold mb-6">Professional Lawn Care & Property Maintenance</h1>
           <p className="text-xl mb-8">Transform your property with our expert services. Get your free quote today!</p>
           <Button
