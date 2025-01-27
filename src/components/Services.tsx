@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Scissors, Droplets, Sprout, Wrench, Spray } from "lucide-react";
+import { Scissors, Droplets, Sprout, Wrench } from "lucide-react";
 import { Button } from "./ui/button";
 
 interface SubService {
@@ -44,7 +44,7 @@ const services: ServiceSection[] = [
     image: "/placeholder.svg",
     subServices: [
       {
-        icon: <Spray className="w-6 h-6 text-primary" />,
+        icon: <Wrench className="w-6 h-6 text-primary" />,
         title: "Pressure Washing",
         description: "High-powered cleaning for driveways, decks, and exterior surfaces to remove dirt and grime."
       },
