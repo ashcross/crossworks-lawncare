@@ -19,9 +19,9 @@ const Hero = () => {
         }}
       />
       <div 
-        className="container relative z-10 mx-auto px-4 h-full flex items-center"
+        className="container relative z-10 mx-auto px-4 h-full flex items-end"
       >
-        <div className="max-w-2xl text-white">
+        <div className="max-w-2xl text-white pb-[10vh]">
           <h1 className="text-5xl font-bold mb-6">Professional Lawn Care & Property Maintenance</h1>
           <p className="text-xl mb-8">Transform your property with our expert services. Get your free quote today!</p>
           <Button
