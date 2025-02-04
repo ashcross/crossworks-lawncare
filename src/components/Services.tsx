@@ -19,7 +19,7 @@ const services: ServiceSection[] = [
   {
     title: "Lawn Care",
     description: "We offer a range or lawn maintenance services to get your grass healthy and beautiful. See some examples of what we do below:",
-    image: "/placeholder.svg",
+    image: "https://res.cloudinary.com/degvaujqm/image/upload/f_auto,q_auto/grass-03-before-and-after.webp",
     subServices: [
       {
         icon: <Scissors className="w-6 h-6 text-primary" />,
@@ -41,7 +41,7 @@ const services: ServiceSection[] = [
   {
     title: "Property Cleaning & Maintenance",
     description: "Complete property care solutions to maintain your property's value and appearance.",
-    image: "/placeholder.svg",
+    image: "https://res.cloudinary.com/degvaujqm/image/upload/f_auto,q_auto/building-01-before-and-after.webp",
     subServices: [
       {
         icon: <Wrench className="w-6 h-6 text-primary" />,
