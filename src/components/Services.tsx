@@ -18,23 +18,23 @@ interface ServiceSection {
 const services: ServiceSection[] = [
   {
     title: "Lawn Care",
-    description: "Comprehensive lawn maintenance services to keep your grass healthy and beautiful.",
+    description: "We offer a range or lawn maintenance services to get your grass healthy and beautiful. See some examples of what we do below:",
     image: "/placeholder.svg",
     subServices: [
       {
         icon: <Scissors className="w-6 h-6 text-primary" />,
         title: "Regular Mowing & Edging",
-        description: "Professional cutting and edging services to maintain the perfect lawn height and neat borders."
+        description: "Professional cutting and edging services to maintain the perfect lawn height and neat borders. We have a regular schedule to keep your lawns looking tidy."
       },
       {
         icon: <Droplets className="w-6 h-6 text-primary" />,
-        title: "Irrigation System Maintenance",
-        description: "Expert maintenance and repairs for your irrigation systems to ensure optimal water distribution."
+        title: "Clean up & Mulching",
+        description: "After each mow we make sure your property remains clean and tidy. Our mulching mower blades finely chop grass clippings and redistribute them back onto your lawn, providing natural fertilization to keep your grass lush and green."
       },
       {
         icon: <Sprout className="w-6 h-6 text-primary" />,
-        title: "Fertilization & Weed Control",
-        description: "Targeted treatment programs to promote healthy growth and prevent weed invasion."
+        title: "Lawn Restoration",
+        description: "If your lawn has gotten out of hand, we provide overgrown lawn restoration services. We’ll get your yard looking tidy and manageable again."
       },
     ],
   },
@@ -45,13 +45,23 @@ const services: ServiceSection[] = [
     subServices: [
       {
         icon: <Wrench className="w-6 h-6 text-primary" />,
-        title: "Pressure Washing",
-        description: "High-powered cleaning for driveways, decks, and exterior surfaces to remove dirt and grime."
+        title: "Pressure Washing Services",
+        description: "High-powered cleaning for driveways, decks, and exterior surfaces to remove dirt and grime. Soft washing for safely cleaning delicate surfaces like windows, roofs, and painted exteriors without damage."
       },
       {
         icon: <Wrench className="w-6 h-6 text-primary" />,
-        title: "General Property Maintenance",
-        description: "Comprehensive maintenance services to keep your property in top condition year-round."
+        title: "Decks, Driveways, Roof, Walls and Gutters",
+        description: "Comprehensive maintenance services to keep your property in top condition year-round. We are flexible with our offering & prices - whether you want just one, or all!"
+      },
+      {
+        icon: <Wrench className="w-6 h-6 text-primary" />,
+        title: "Commercial Pressure Washing",
+        description: "Designed for businesses - we clean high-traffic areas, remove dirt, grime, and graffiti, and restore the appearance of your commercial property, helping you maintain a professional image for customers and clients."
+      },
+      {
+        icon: <Wrench className="w-6 h-6 text-primary" />,
+        title: "Window Washing",
+        description: "Let us clean the exterior of your windows with our professional washing service, eliminating dirt, stains, and grime that builds up on glass and window frames."
       },
     ],
   },
