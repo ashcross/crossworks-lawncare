@@ -14,7 +14,7 @@ const Hero = () => {
       <div
         className="absolute inset-0 z-0 bg-cover bg-center"
         style={{
-          backgroundImage: "url('https://res.cloudinary.com/degvaujqm/image/upload/f_auto,q_auto/jake-nackos-C2PCa6DhlYE-unsplash.jpg')",
+          backgroundImage: "url('https://res.cloudinary.com/degvaujqm/image/upload/f_auto,q_auto/jake-nackos-C2PCa6DhlYE-unsplash.webp')",
           filter: "brightness(0.7)",
         }}
       />
