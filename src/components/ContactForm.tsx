@@ -1,11 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
+import emailjs from '@emailjs/browser';
+
+declare global {
+  interface Window {
+    turnstile: any;
+    onloadTurnstileCallback: () => void;
+  }
+}
 
 const ContactForm = () => {
   const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string>("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -13,15 +23,77 @@ const ContactForm = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    // Initialize Turnstile
+    const script = document.createElement("script");
+    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback";
+    script.async = true;
+    script.defer = true;
+    
+    // Callback when Turnstile is ready
+    window.onloadTurnstileCallback = () => {
+      window.turnstile.render('#turnstile-container', {
+        sitekey: '1x00000000000000000000AA', // Replace with your actual site key
+        callback: function(token: string) {
+          setTurnstileToken(token);
+        },
+      });
+    };
+    
+    document.body.appendChild(script);
+    
+    return () => {
+      document.body.removeChild(script);
+      delete window.onloadTurnstileCallback;
+    };
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, you'd send this to your backend
-    console.log("Form submitted:", formData);
-    toast({
-      title: "Quote Request Received!",
-      description: "We'll get back to you within 24 hours.",
-    });
-    setFormData({ name: "", email: "", phone: "", message: "" });
+    
+    if (!turnstileToken) {
+      toast({
+        title: "Error",
+        description: "Please complete the security check",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsLoading(true);
+    
+    try {
+      await emailjs.send(
+        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
+        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+          turnstile: turnstileToken,
+        },
+        'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
+      );
+
+      toast({
+        title: "Quote Request Received!",
+        description: "We'll get back to you within 24 hours.",
+      });
+      
+      setFormData({ name: "", email: "", phone: "", message: "" });
+      // Reset Turnstile
+      window.turnstile.reset();
+      
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "There was a problem sending your message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -41,6 +113,7 @@ const ContactForm = () => {
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               required
               className="w-full"
+              disabled={isLoading}
             />
           </div>
           <div>
@@ -51,6 +124,7 @@ const ContactForm = () => {
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               required
               className="w-full"
+              disabled={isLoading}
             />
           </div>
           <div>
@@ -61,6 +135,7 @@ const ContactForm = () => {
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               required
               className="w-full"
+              disabled={isLoading}
             />
           </div>
           <div>
@@ -70,13 +145,16 @@ const ContactForm = () => {
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               required
               className="w-full min-h-[150px]"
+              disabled={isLoading}
             />
           </div>
+          <div id="turnstile-container" className="flex justify-center"></div>
           <Button
             type="submit"
             className="w-full bg-primary hover:bg-primary-dark text-white py-6 text-lg"
+            disabled={isLoading}
           >
-            Request Free Quote
+            {isLoading ? "Sending..." : "Request Free Quote"}
           </Button>
         </form>
       </div>
