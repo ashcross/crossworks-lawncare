@@ -23,15 +23,15 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-gray-800 mb-2">Contact Us</h3>
             <div className="flex items-center space-x-2 text-gray-600">
               <Phone size={18} />
-              <span>(555) 123-4567</span>
+              <span><a href="tel:021910071">021 910 071</a></span>
             </div>
             <div className="flex items-center space-x-2 text-gray-600">
               <Mail size={18} />
-              <span>info@crossworks.com</span>
+              <span><a href="mailto:admin@jdcrossworks.co.nz?subject=Lawn%20or%20property%20enquiry%20from%20the%20website">admin@jdcrossworks.co.nz</a></span>
             </div>
             <div className="flex items-center space-x-2 text-gray-600">
               <MapPin size={18} />
-              <span>123 Lawn Street, Garden City</span>
+              <span>Kaitaia, New Zealand</span>
             </div>
           </div>
         </div>
