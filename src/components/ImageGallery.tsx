@@ -5,28 +5,34 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 // Sample gallery images - replace with your actual images
 const galleryImages = [
   {
-    src: "https://images.unsplash.com/photo-1472396961693-142e6e269027",
-    alt: "Two deer in a natural landscape",
-    width: 1200,
-    height: 800,
+    src: "https://res.cloudinary.com/degvaujqm/image/upload/f_auto,q_auto/roof-01-before.webp",
+    alt: "Roof resotration - before with moss and lichen",
+    width: 919,
+    height: 919,
   },
   {
-    src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
-    alt: "Body of water surrounded by trees",
-    width: 1200,
-    height: 900,
+    src: "https://res.cloudinary.com/degvaujqm/image/upload/f_auto,q_auto/roof-01-after.webp",
+    alt: "Roof restoration - after and clean",
+    width: 919,
+    height: 919,
   },
   {
-    src: "https://images.unsplash.com/photo-1433832597046-4f10e10ac764",
-    alt: "Architectural photo of white high rise building",
-    width: 800,
-    height: 1200,
+    src: "https://res.cloudinary.com/degvaujqm/image/upload/f_auto,q_auto/grass-01-before-and-after.webp",
+    alt: "Grass lawn restoration - before and after",
+    width: 919,
+    height: 919,
   },
   {
-    src: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7",
-    alt: "Professional lawn care service in action",
-    width: 1200,
-    height: 800,
+    src: "https://res.cloudinary.com/degvaujqm/image/upload/f_auto,q_auto/grass-02-before-and-after.webp",
+    alt: "Grass lawn restoration - before and after",
+    width: 919,
+    height: 919,
+  },
+  {
+    src: "https://res.cloudinary.com/degvaujqm/image/upload/f_auto,q_auto/grass-03-before-and-after.webp",
+    alt: "Grass lawn restoration - before and after",
+    width: 919,
+    height: 919,
   },
 ];
 
