@@ -70,7 +70,7 @@ const services: ServiceSection[] = [
 const ServiceSection = ({ service }: { service: ServiceSection }) => {
   return (
     <div className="grid md:grid-cols-2 gap-8 py-16">
-      <div className="relative h-[400px]">
+      <div className="relative h-auto">
         <img
           src={service.image}
           alt={service.title}
