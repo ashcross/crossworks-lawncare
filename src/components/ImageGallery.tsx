@@ -34,6 +34,60 @@ const galleryImages = [
     width: 919,
     height: 919,
   },
+  {
+    src: "https://res.cloudinary.com/degvaujqm/image/upload/f_auto,q_auto/building-01-before-and-after.webp",
+    alt: "Wall and building pressure cleaning - before and after",
+    width: 919,
+    height: 919,
+  },
+  {
+    src: "https://res.cloudinary.com/degvaujqm/image/upload/f_auto,q_auto/building-02-before-and-after.webp",
+    alt: "Wall and building pressure cleaning - before and after",
+    width: 919,
+    height: 919,
+  },
+  {
+    src: "https://res.cloudinary.com/degvaujqm/image/upload/f_auto,q_auto/building-03-before-and-after.webp",
+    alt: "Wall and building pressure cleaning - before and after",
+    width: 919,
+    height: 919,
+  },
+  {
+    src: "https://res.cloudinary.com/degvaujqm/image/upload/f_auto,q_auto/trees-01-before.webp",
+    alt: "Tree clean up, pruning and shaping - before",
+    width: 689,
+    height: 919,
+  },
+  {
+    src: "https://res.cloudinary.com/degvaujqm/image/upload/f_auto,q_auto/trees-01-after.webp",
+    alt: "Tree clean up, pruning and shaping - after",
+    width: 689,
+    height: 919,
+  },
+  {
+    src: "https://res.cloudinary.com/degvaujqm/image/upload/f_auto,q_auto/hedge-01-before.webp",
+    alt: "Hedge clean up, pruning and shaping - before",
+    width: 689,
+    height: 919,
+  },
+  {
+    src: "https://res.cloudinary.com/degvaujqm/image/upload/f_auto,q_auto/hedge-01-after.webp",
+    alt: "Hedge clean up, pruning and shaping - after",
+    width: 689,
+    height: 919,
+  },
+  {
+    src: "https://res.cloudinary.com/degvaujqm/image/upload/f_auto,q_auto/hedge-02-before.webp",
+    alt: "Hedge clean up, pruning and shaping - before",
+    width: 689,
+    height: 919,
+  },
+  {
+    src: "https://res.cloudinary.com/degvaujqm/image/upload/f_auto,q_auto/hedge-02-after.webp",
+    alt: "Hedge clean up, pruning and shaping - after",
+    width: 689,
+    height: 919,
+  },
 ];
 
 const ImageGallery = () => {
