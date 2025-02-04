@@ -33,7 +33,7 @@ const ContactForm = () => {
     // Callback when Turnstile is ready
     window.onloadTurnstileCallback = () => {
       window.turnstile.render('#turnstile-container', {
-        sitekey: '1x00000000000000000000AA', // Replace with your actual site key
+        sitekey: '0x4AAAAAAA7iStvlhUXukK_8', // Replace with your actual site key
         callback: function(token: string) {
           setTurnstileToken(token);
         },
