@@ -11,19 +11,19 @@ const Header = () => {
           <nav className="flex items-center gap-8">
             <Link 
               to="/" 
-              className="text-gray-900 hover:text-primary transition-colors"
+              className="text-gray-900 hover:text-white hover:bg-primary transition-all duration-200 rounded-lg px-4 py-2"
             >
               Lawn Care
             </Link>
             <Link 
               to="/" 
-              className="text-gray-900 hover:text-primary transition-colors"
+              className="text-gray-900 hover:text-white hover:bg-primary transition-all duration-200 rounded-lg px-4 py-2"
             >
               Property Care
             </Link>
             <Link 
               to="/" 
-              className="text-gray-900 hover:text-primary transition-colors"
+              className="text-gray-900 hover:text-white hover:bg-primary transition-all duration-200 rounded-lg px-4 py-2"
             >
               Our Work
             </Link>
