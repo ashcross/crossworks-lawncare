@@ -19,14 +19,14 @@ const Hero = () => {
         }}
       />
       <div 
-        className="container relative z-10 mx-auto px-4 h-full flex items-end"
+        className="container relative z-10 mx-auto px-4 h-full flex items-center justify-center"
       >
-        <div className="max-w-2xl text-white pb-[10vh]">
+        <div className="max-w-2xl text-white text-center pt-[16vh]">
           <h1 className="text-5xl font-bold mb-6">Professional Lawn & Property Care in Northland</h1>
           <p className="text-xl mb-8">Transform your outdoor spaces with our expert lawn mowing and pressure washing services.</p>
           <Button
             onClick={scrollToContact}
-            className="bg-primary hover:bg-primary-dark text-white px-8 py-6 text-lg rounded-lg flex items-center gap-2 transition-all transform hover:scale-105"
+            className="bg-primary hover:bg-primary-dark text-white px-8 py-6 text-lg rounded-lg flex items-center gap-2 transition-all transform hover:scale-105 justify-self-center"
           >
             Get Free Quote <ArrowRight className="ml-2" />
           </Button>
