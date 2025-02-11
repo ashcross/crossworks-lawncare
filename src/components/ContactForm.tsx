@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -16,6 +17,9 @@ const ContactForm = () => {
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState<string>("");
+  const scriptRef = useRef<HTMLScriptElement | null>(null);
+  const widgetId = useRef<string | null>(null);
+  
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -24,29 +28,51 @@ const ContactForm = () => {
   });
 
   useEffect(() => {
-    // Initialize Turnstile
+    // Cleanup any existing script
+    if (scriptRef.current) {
+      document.body.removeChild(scriptRef.current);
+      scriptRef.current = null;
+    }
+
+    // Create new script element
     const script = document.createElement("script");
-    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback";
+    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
     script.async = true;
     script.defer = true;
-    
-    // Callback when Turnstile is ready
+    scriptRef.current = script;
+
+    // Define callback before loading script
     window.onloadTurnstileCallback = () => {
-      window.turnstile.render('#turnstile-container', {
-        sitekey: '0x4AAAAAAA7iStvlhUXukK_8', // Replace with your actual site key
-        callback: function(token: string) {
-          setTurnstileToken(token);
-        },
-      });
+      if (window.turnstile) {
+        // Reset any existing widget
+        if (widgetId.current) {
+          window.turnstile.remove(widgetId.current);
+        }
+        
+        // Render new widget
+        widgetId.current = window.turnstile.render('#turnstile-container', {
+          sitekey: '0x4AAAAAAA7iStvlhUXukK_8',
+          callback: function(token: string) {
+            setTurnstileToken(token);
+          },
+        });
+      }
     };
-    
+
+    // Append script to document
     document.body.appendChild(script);
-    
+
+    // Cleanup function
     return () => {
-      document.body.removeChild(script);
+      if (scriptRef.current) {
+        document.body.removeChild(scriptRef.current);
+      }
+      if (widgetId.current && window.turnstile) {
+        window.turnstile.remove(widgetId.current);
+      }
       delete window.onloadTurnstileCallback;
     };
-  }, []);
+  }, []); // Empty dependency array means this runs once on mount
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -64,8 +90,8 @@ const ContactForm = () => {
     
     try {
       await emailjs.send(
-        'service_bs7jei4', // Replace with your EmailJS service ID
-        'template_k3cbmu9', // Replace with your EmailJS template ID
+        'service_bs7jei4',
+        'template_k3cbmu9',
         {
           from_name: formData.name,
           from_email: formData.email,
@@ -73,7 +99,7 @@ const ContactForm = () => {
           message: formData.message,
           turnstile: turnstileToken,
         },
-        '2JBp9RKirFKiRlxF2' // Replace with your EmailJS public key
+        '2JBp9RKirFKiRlxF2'
       );
 
       toast({
@@ -82,8 +108,11 @@ const ContactForm = () => {
       });
       
       setFormData({ name: "", email: "", phone: "", message: "" });
-      // Reset Turnstile
-      window.turnstile.reset();
+      
+      // Reset Turnstile after successful submission
+      if (window.turnstile && widgetId.current) {
+        window.turnstile.reset(widgetId.current);
+      }
       
     } catch (error) {
       toast({
