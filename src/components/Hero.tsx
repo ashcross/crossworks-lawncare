@@ -22,7 +22,7 @@ const Hero = () => {
         className="container relative z-10 mx-auto px-4 h-full flex items-center justify-center"
       >
         <div className="max-w-2xl text-white text-center pt-[16vh]">
-          <h1 className="text-5xl font-bold mb-6">Professional Lawn & Property Care in Northland</h1>
+          <h1 className="text-5xl font-bold mb-6">Professional Lawn & Property Care in Northland.</h1>
           <p className="text-xl mb-8">Transform your outdoor spaces with our expert lawn mowing and pressure washing services.</p>
           <Button
             onClick={scrollToContact}
