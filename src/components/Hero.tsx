@@ -22,7 +22,7 @@ const Hero = () => {
         className="container relative z-10 mx-auto px-4 h-full flex items-center justify-center"
       >
         <div className="max-w-2xl text-white text-center pt-[16vh] drop-shadow-lg ">
-          <div className="flex justify-center gap-4 text-gray-200 mb-4"><span>Honest</span>|<span>Hardworking</span>|<span>Reliable</span></div>
+          <div className="flex justify-center gap-4 text-gray-200 mb-4 font-semibold"><span>Honest</span>|<span>Hardworking</span>|<span>Reliable</span></div>
           <h1 className="text-5xl font-bold mb-6">CrossWorks Lawnmowing and Property Care</h1>
           <p className="text-xl mb-8">Transform your outdoor spaces with our expert lawn mowing and pressure washing services.</p>
           <Button
