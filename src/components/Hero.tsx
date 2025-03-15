@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -18,10 +19,21 @@ const Hero = () => {
           filter: "brightness(0.7)",
         }}
       />
-      <div 
-        className="container relative z-10 mx-auto px-4 h-full flex items-center justify-center"
-      >
-        <div className="max-w-2xl text-white text-center pt-[16vh] drop-shadow-lg ">
+      <div className="container relative z-10 mx-auto px-4 h-full flex flex-col items-center justify-center gap-8">
+        
+        <div className="">
+          <div className="flex flex-col items-center justify-center">
+            <Link to="/" className="mb-4 aspect-square bg-white/60 backdrop-blur-sm flex justify-center items-center rounded-full p-6 shadow-lg">
+              <img 
+                src="/logo.png" 
+                alt="CrossWorks Lawnmowing & Property Care" 
+                className="h-24 w-auto transition-transform hover:scale-105" 
+              />
+            </Link>
+          </div>
+        </div>
+
+        <div className="max-w-2xl text-white text-center drop-shadow-lg ">
           <div className="flex justify-center gap-4 text-gray-200 mb-4 font-semibold"><span>Honest</span>|<span>Hardworking</span>|<span>Reliable</span></div>
           <h1 className="text-5xl font-bold mb-6">CrossWorks Lawnmowing and Property Care</h1>
           <p className="text-xl mb-8">Transform your outdoor spaces with our expert lawn mowing and pressure washing services.</p>
