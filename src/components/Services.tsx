@@ -75,14 +75,14 @@ const services: ServiceSection[] = [
 const ServiceSection = ({ service }: { service: ServiceSection }) => {
   return (
     <div className="grid md:grid-cols-5 gap-24 py-16">
-      <div className="relative h-auto col-span-2 my-auto">
+      <div className="relative h-auto md:col-span-3 md:col-start-2 lg:col-span-2 my-auto">
         <img
           src={service.image}
           alt={service.title}
           className="w-full max-h-full object-cover rounded-lg"
         />
       </div>
-      <div className="space-y-8 col-span-3">
+      <div className="space-y-8 md:col-span-3 md:col-start-2 lg:col-span-3">
         <div>
           <h2 className="text-3xl font-bold mb-4">{service.title}</h2>
           <p className="text-gray-600">{service.description}</p>
@@ -104,7 +104,7 @@ const ServiceSection = ({ service }: { service: ServiceSection }) => {
 
         <Button
           size="lg"
-          className="w-full md:w-auto"
+          className="bg-primary hover:bg-primary-dark text-white px-8 py-6 text-lg rounded-lg flex items-center gap-2 transition-all transform hover:scale-105"
           onClick={() => {
             document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
           }}
