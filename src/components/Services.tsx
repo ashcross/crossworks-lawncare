@@ -33,25 +33,30 @@ const services: ServiceSection[] = [
       },
       {
         icon: <Sprout className="w-6 h-6 text-primary" />,
-        title: "Lawn Restoration",
+        title: "Overgrown Lawn Restoration",
         description: "If your lawn has gotten out of hand, we provide overgrown lawn restoration services. We’ll get your yard looking tidy and manageable again."
+      },
+      {
+        icon: <Sprout className="w-6 h-6 text-primary" />,
+        title: "Hedge Trimming & Tree Pruning",
+        description: "If you want a sharp edge to your hedge, or want a messy tree tidied up, we can cut it back and sort it out!"
       },
     ],
   },
   {
-    title: "Property Cleaning & Maintenance",
+    title: "Exterior house cleaning and Pressure Washing Services",
     description: "Complete property care solutions to maintain your property's value and appearance.",
     image: "https://res.cloudinary.com/degvaujqm/image/upload/f_auto,q_auto/building-01-before-and-after.webp",
     subServices: [
       {
         icon: <Wrench className="w-6 h-6 text-primary" />,
-        title: "Pressure Washing Services",
-        description: "High-powered cleaning for driveways, decks, and exterior surfaces to remove dirt and grime. Soft washing for safely cleaning delicate surfaces like windows, roofs, and painted exteriors without damage."
+        title: "Exterior House Washing",
+        description: "With the use of soft-washing techniques, we use the appropriate chemicals to brighten up your home, while protecting your delicate surfaces. Say goodbye to things like moss, algae and mildew, and hello to a bright and clean surface."
       },
       {
         icon: <Wrench className="w-6 h-6 text-primary" />,
-        title: "Decks, Driveways, Roof, Walls and Gutters",
-        description: "Comprehensive maintenance services to keep your property in top condition year-round. We are flexible with our offering & prices - whether you want just one, or all!"
+        title: "Roof, Deck, Driveway, Wall and Gutter Cleaning",
+        description: "Using Commercial Grade gear, we can get your outdoor surfaces looking great again! Whether it be a dirty driveway, or a roof that needs some attention, we have you covered!"
       },
       {
         icon: <Wrench className="w-6 h-6 text-primary" />,
@@ -69,15 +74,15 @@ const services: ServiceSection[] = [
 
 const ServiceSection = ({ service }: { service: ServiceSection }) => {
   return (
-    <div className="grid md:grid-cols-2 gap-8 py-16">
-      <div className="relative h-auto">
+    <div className="grid md:grid-cols-5 gap-24 py-16">
+      <div className="relative h-auto md:col-span-3 md:col-start-2 lg:col-span-2 my-auto">
         <img
           src={service.image}
           alt={service.title}
-          className="w-full h-full object-cover rounded-lg"
+          className="w-full max-h-full object-cover rounded-lg"
         />
       </div>
-      <div className="space-y-8">
+      <div className="space-y-8 md:col-span-3 md:col-start-2 lg:col-span-3">
         <div>
           <h2 className="text-3xl font-bold mb-4">{service.title}</h2>
           <p className="text-gray-600">{service.description}</p>
@@ -99,7 +104,7 @@ const ServiceSection = ({ service }: { service: ServiceSection }) => {
 
         <Button
           size="lg"
-          className="w-full md:w-auto"
+          className="bg-primary hover:bg-primary-dark text-white px-8 py-6 text-lg rounded-lg flex items-center gap-2 transition-all transform hover:scale-105"
           onClick={() => {
             document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
           }}
