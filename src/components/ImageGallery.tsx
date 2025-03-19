@@ -125,11 +125,11 @@ const ImageGallery = () => {
           From immaculate lawns to pristine exteriors, see the quality of our work firsthand.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
           {galleryImages.map((image, index) => (
             <div
               key={image.src}
-              className="relative group cursor-pointer overflow-hidden rounded-lg"
+              className="relative group cursor-pointer overflow-hidden rounded-lg break-inside-avoid mb-4"
               onClick={() => setSelectedImage(index)}
               onKeyDown={(e) => e.key === "Enter" && setSelectedImage(index)}
               tabIndex={0}
