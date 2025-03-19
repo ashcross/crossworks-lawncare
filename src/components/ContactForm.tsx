@@ -1,13 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import emailjs from '@emailjs/browser';
 
+// Declare global grecaptcha
+declare global {
+  interface Window {
+    grecaptcha: any;
+    onloadCallback: () => void;
+  }
+}
+
 const ContactForm = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const recaptchaRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,11 +24,48 @@ const ContactForm = () => {
     message: "",
   });
 
+  useEffect(() => {
+    // Make sure window.onloadCallback is defined
+    window.onloadCallback = () => {
+      if (recaptchaRef.current && window.grecaptcha) {
+        window.grecaptcha.render(recaptchaRef.current, {
+          'sitekey': '6LdVR_kqAAAAAIpSjz47nHTz22Unm6ysUKMUt2rE'
+        });
+      }
+    };
+
+    // Load script if it hasn't been loaded yet
+    if (!document.querySelector('script[src*="recaptcha/api.js"]')) {
+      const script = document.createElement('script');
+      script.src = 'https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit';
+      script.async = true;
+      script.defer = true;
+      document.body.appendChild(script);
+    } else if (window.grecaptcha && window.onloadCallback) {
+      // If already loaded, call callback manually
+      window.onloadCallback();
+    }
+
+    return () => {
+      // Cleanup if needed
+      if (document.querySelector('script[src*="recaptcha/api.js"]')) {
+        window.onloadCallback = undefined;
+      }
+    };
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
     try {
+      // Get the recaptcha response
+      const recaptchaResponse = window.grecaptcha.getResponse();
+      
+      if (!recaptchaResponse) {
+        throw new Error("Please complete the reCAPTCHA verification");
+      }
+      
       // Replace these with your actual EmailJS service, template and user IDs
       const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
       const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
@@ -34,6 +80,7 @@ const ContactForm = () => {
         reply_to: formData.email,
         phone_number: formData.phone,
         message: formData.message,
+        'g-recaptcha-response': recaptchaResponse
       };
 
       const response = await emailjs.send(
@@ -109,6 +156,7 @@ const ContactForm = () => {
               className="w-full min-h-[150px]"
             />
           </div>
+          <div ref={recaptchaRef} className="g-recaptcha mb-4"></div>
           <Button
             type="submit"
             className="w-full bg-primary hover:bg-primary-dark text-white py-6 text-lg"
